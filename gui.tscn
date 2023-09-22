@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://dewrce7yfiodo"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/GUI.gd" id="1_h7vxh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_oq0bp"]
+font_size = 20
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[node name="GUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h7vxh")
+
+[node name="PlayerVelocity" type="Label" parent="."]
+layout_mode = 1
+offset_right = 144.0
+offset_bottom = 37.0
+text = "speed"
+label_settings = SubResource("LabelSettings_oq0bp")

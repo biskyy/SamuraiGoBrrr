@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dr8abxk6qyr81"]
+
+[ext_resource type="PackedScene" uid="uid://cq7m6w20yvvql" path="res://Assets/Models/katana.glb" id="1_svk2r"]
+
+[node name="katana" instance=ExtResource("1_svk2r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0062741, 0)
+
+[node name="KatanaBlade" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.829116, 0, 0, 0, 1, 0.00213928, 0.535259, -7.80432)
+
+[node name="KatanaHabaki" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.829116, 0, 0, 0, 1, 0.00246346, 0.16718, -0.281687)

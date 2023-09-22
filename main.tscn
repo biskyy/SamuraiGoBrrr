@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=3 uid="uid://ba1awp54b4n3m"]
+
+[ext_resource type="Texture2D" uid="uid://b2vv4sbpwp1bu" path="res://Assets/Sky/industrial_sunset_puresky_2k.hdr" id="1_dn6yw"]
+[ext_resource type="PackedScene" uid="uid://bcmuvdkb81s1d" path="res://player.tscn" id="2_g6ulb"]
+[ext_resource type="PackedScene" uid="uid://dwdfb7x8rrp0d" path="res://map.tscn" id="3_saw0c"]
+[ext_resource type="PackedScene" path="res://gui.tscn" id="5_3q48n"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_e5705"]
+panorama = ExtResource("1_dn6yw")
+
+[sub_resource type="Sky" id="Sky_0xbss"]
+sky_material = SubResource("PanoramaSkyMaterial_e5705")
+
+[sub_resource type="Environment" id="Environment_wucrw"]
+background_mode = 2
+sky = SubResource("Sky_0xbss")
+ambient_light_source = 3
+reflected_light_source = 2
+
+[node name="main" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0140805, 0, 0.0185852)
+
+[node name="Sky" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_wucrw")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.845774, 0.319462, -0.427329, 0, 0.80093, 0.598758, 0.533541, -0.506414, 0.677406, 0, 3.54125, 0)
+shadow_enabled = true
+sky_mode = 1
+
+[node name="player" parent="." instance=ExtResource("2_g6ulb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+linear_damp = 4.0
+speed = 3000.0
+
+[node name="map" parent="." instance=ExtResource("3_saw0c")]
+
+[node name="GUI" parent="." instance=ExtResource("5_3q48n")]

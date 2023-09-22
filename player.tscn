@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://bcmuvdkb81s1d"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/PlayerMovement.gd" id="1_u42ek"]
+[ext_resource type="PackedScene" uid="uid://cq7m6w20yvvql" path="res://Assets/Models/katana.glb" id="2_3r5e0"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5ah76"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_poo1p"]
+
+[node name="player" type="RigidBody3D"]
+collision_layer = 3
+lock_rotation = true
+linear_damp = 3.0
+script = ExtResource("1_u42ek")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_5ah76")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+layers = 2
+mesh = SubResource("CapsuleMesh_poo1p")
+
+[node name="xRotation" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="yRotation" type="Node3D" parent="xRotation"]
+
+[node name="PlayerCamera" type="Camera3D" parent="xRotation/yRotation"]
+current = true
+fov = 110.0
+
+[node name="HandLocation" type="Node3D" parent="xRotation/yRotation/PlayerCamera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, -0.4)
+
+[node name="Hand" type="Node3D" parent="xRotation/yRotation/PlayerCamera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, -0.4)
+
+[node name="katana" parent="xRotation/yRotation/PlayerCamera/Hand" instance=ExtResource("2_3r5e0")]
+transform = Transform3D(0.1, 0, 0, 0, -0.0866025, 0.05, 0, -0.05, -0.0866025, 0, 0, 0)
